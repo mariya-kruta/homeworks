@@ -2,7 +2,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String congratulation = "Happy 23 Birthday";
+        int age = 23;
+
+        String congratulation = "Happy "+age+" Birthday";
         System.out.println(congratulation);
     }
 
