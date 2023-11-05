@@ -1,12 +1,24 @@
 package homework1;
 
-public class Bicycle extends Transport{
+public class Bicycle extends Transport {
+
     int numberOfGears;
-    public void description(String name, int maxSpeed, int numberOfGears){
-    super.description(name, maxSpeed);
-    System.out.println("Кількість передач: "+numberOfGears+".");
+
+    Bicycle(String name, int maxSpeed, int numberOfGears) {
+        super(name, maxSpeed);
+        this.numberOfGears = numberOfGears;
     }
-    public void description(String name, int maxSpeed){
-        description(name,maxSpeed,numberOfGears);
+
+    @Override
+    public void description() {
+        super.description();
+        System.out.println("Кількість передач: " + numberOfGears + ".");
     }
+
+    public void description(String str1) {
+        super.description();
+        System.out.println("Кількість передач: " + numberOfGears + ".");
+        System.out.println(str1);
+    }
+
 }

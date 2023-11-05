@@ -1,12 +1,16 @@
 package homework1;
-public class Main {
-    public static void main(String[] args) {
-        Transport transport = new Transport();
-        Car car = new Car();
-        Bicycle bicycle = new Bicycle();
 
-        transport.description("bus", 60);
-        car.description("KIA",100,4, "A95");
-        bicycle.description("Velo",10,4);
+public class Main {
+
+    public static void main(String[] args) {
+        Transport transport = new Transport("Mustang", 255);
+        Car car = new Car("KIA", 100, 4, "A95");
+        Bicycle bicycle = new Bicycle("Velo", 10, 4);
+
+        transport.description();
+        car.description();
+        bicycle.description("ПЕРЕГРУЖЕННЫЙ МЕТОД");
+        bicycle.description();
     }
+
 }
