@@ -5,8 +5,8 @@ public class Main {
         Car car = new Car();
         Bicycle bicycle = new Bicycle();
 
-        transport.description("bus", 60);
-        car.description("KIA",100,4, "A95");
-        bicycle.description("Velo",10,4);
+        transport.toString("bus", 60);
+        car.toString("KIA",100,4, "A95");
+        bicycle.toString("Velo",10,4);
     }
 }

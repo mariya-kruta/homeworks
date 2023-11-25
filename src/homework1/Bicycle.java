@@ -2,11 +2,11 @@ package homework1;
 
 public class Bicycle extends Transport{
     int numberOfGears;
-    public void description(String name, int maxSpeed, int numberOfGears){
-    super.description(name, maxSpeed);
+    public void toString(String name, int maxSpeed, int numberOfGears){
+    super.toString(name, maxSpeed);
     System.out.println("Кількість передач: "+numberOfGears+".");
     }
-    public void description(String name, int maxSpeed){
-        description(name,maxSpeed,numberOfGears);
+    public void toString(String name, int maxSpeed){
+        toString(name,maxSpeed,numberOfGears);
     }
 }
