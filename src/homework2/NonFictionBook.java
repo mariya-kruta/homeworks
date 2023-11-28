@@ -7,10 +7,12 @@ public class NonFictionBook extends Book {
         super(title, author, year);
         this.subject = subject;
     }
-    public String getSubject(){
-        return subject;
+
+    public String getSubject() {
+        return subject.toLowerCase();
     }
-    public String toString(){
-        return super.toString()+"Subject: "+subject+". ";
+
+    public String toString() {
+        return super.toString() + "Subject: " + subject + ". ";
     }
 }

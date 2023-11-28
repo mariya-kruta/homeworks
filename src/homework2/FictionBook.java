@@ -7,10 +7,12 @@ public class FictionBook extends Book {
         super(title, author, year);
         this.genre = genre;
     }
-    public String getGenre(){
-        return this.genre;
+
+    public String getGenre() {
+        return genre.toLowerCase();
     }
-    public String toString(){
-        return super.toString()+"Genre: "+genre+".";
+
+    public String toString() {
+        return super.toString() + "Genre: " + genre + ".";
     }
 }

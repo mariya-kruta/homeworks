@@ -14,13 +14,17 @@ public class Library {
         books.put(1005, new NonFictionBook("Testing.Dot.Com", "R.Savin", 2003, "IT"));
         books.remove(1001);
         books.put(1006, new FictionBook("POCROV", "L.Dashvar", 2018, "modern UA"));
-
-        searchTitle("Clean code",books);
+        System.out.println(books.get(1003));
+        searchTitle("perfumer", books);
+        searchAuthor("O.Henry", books);
+        searchYear(2018, books);
+        searchGenre("novel", books);
+        searchSubject("IT", books);
     }
 
     public static void searchTitle(String title, Map<Integer, Book> books) {
         for (Book value : books.values()) {
-            if (title.equals(value.getTitle())) {
+            if (title.toLowerCase().equals(value.getTitle())) {
                 System.out.println(value);
             }
         }
@@ -28,7 +32,7 @@ public class Library {
 
     public static void searchAuthor(String author, Map<Integer, Book> books) {
         for (Book value : books.values()) {
-            if (author.equals(value.getAuthor())) {
+            if (author.toLowerCase().equals(value.getAuthor())) {
                 System.out.println(value);
             }
         }
@@ -41,16 +45,18 @@ public class Library {
             }
         }
     }
-    public static void searchGenre(String genre, Map<Integer, FictionBook> books) {
-        for (FictionBook value : books.values()) {
-            if (genre.equals(value.getGenre())){
+
+    public static void searchGenre(String genre, Map<Integer, Book> books) {
+        for (Book value : books.values()) {
+            if (genre.toLowerCase().equals(value.getGenre())) {
                 System.out.println(value);
             }
         }
     }
-    public static void searchSubject(String subject, Map<Integer, Book> books){
-        for (Book value : books.values()){
-            if(subject.equals(value.getTitle())){
+
+    public static void searchSubject(String subject, Map<Integer, Book> books) {
+        for (Book value : books.values()) {
+            if (subject.toLowerCase().equals(value.getSubject())) {
                 System.out.println(value);
             }
         }

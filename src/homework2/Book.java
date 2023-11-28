@@ -1,7 +1,5 @@
 package homework2;
 
-import java.util.Map;
-
 public class Book {
     private String title;
     private String author;
@@ -12,17 +10,29 @@ public class Book {
         this.author = author;
         this.year = year;
     }
-    public String getTitle(){
-        return title;
+
+    public String getTitle() {
+        return title.toLowerCase();
     }
-    public String getAuthor(){
-        return author;
+
+    public String getAuthor() {
+        return author.toLowerCase();
     }
-    public int getYear(){
+
+    public int getYear() {
         return year;
     }
-    public String toString(){
-        return "Name: "+title+". Author: "+author+". Year: "+year+". ";
+
+    public String getSubject() {
+        return "is absent";
+    }
+
+    public String getGenre() {
+        return "is absent";
+    }
+
+    public String toString() {
+        return "Name: " + title + ". Author: " + author + ". Year: " + year + ". ";
     }
 }
 
