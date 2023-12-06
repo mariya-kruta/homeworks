@@ -12,15 +12,23 @@ public class Book {
     }
 
     public String getTitle() {
-        return title;
+        return title.toLowerCase();
     }
 
     public String getAuthor() {
-        return author;
+        return author.toLowerCase();
     }
 
     public int getYear() {
         return year;
+    }
+
+    public String getSubject() {
+        return "is absent";
+    }
+
+    public String getGenre() {
+        return "is absent";
     }
 
     public String toString() {
