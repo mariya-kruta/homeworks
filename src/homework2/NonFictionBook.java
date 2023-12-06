@@ -9,7 +9,7 @@ public class NonFictionBook extends Book {
     }
 
     public String getSubject() {
-        return subject.toLowerCase();
+        return subject;
     }
 
     public String toString() {
