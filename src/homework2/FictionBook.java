@@ -9,7 +9,7 @@ public class FictionBook extends Book {
     }
 
     public String getGenre() {
-        return genre.toLowerCase();
+        return genre;
     }
 
     public String toString() {
