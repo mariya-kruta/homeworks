@@ -26,5 +26,6 @@ public class Book {
     public String toString() {
         return "Name: " + title + ". Author: " + author + ". Year: " + year + ". ";
     }
+
 }
 

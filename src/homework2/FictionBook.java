@@ -15,4 +15,5 @@ public class FictionBook extends Book {
     public String toString() {
         return super.toString() + "Genre: " + genre + ".";
     }
+
 }

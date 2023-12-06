@@ -15,4 +15,5 @@ public class NonFictionBook extends Book {
     public String toString() {
         return super.toString() + "Subject: " + subject + ". ";
     }
+
 }
