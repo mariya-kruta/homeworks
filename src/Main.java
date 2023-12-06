@@ -4,7 +4,7 @@ public class Main {
 
         int age = 23;
 
-        String congratulation = "Happy "+age+" Birthday";
+        String congratulation = "Happy " + age + " Birthday";
         System.out.println(congratulation);
     }
 
