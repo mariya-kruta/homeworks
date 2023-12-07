@@ -1,6 +1,7 @@
 package homework2;
 
 public class Book {
+
     private String title;
     private String author;
     private int year;
@@ -34,5 +35,6 @@ public class Book {
     public String toString() {
         return "Name: " + title + ". Author: " + author + ". Year: " + year + ". ";
     }
+
 }
 

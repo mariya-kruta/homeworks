@@ -4,61 +4,82 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Library {
-    public static void main(String[] args) {
 
-        Map<Integer, Book> books = new HashMap<>();
-        books.put(1001, new Book("1984", "J.Oruel", 1954));
-        books.put(1002, new FictionBook("The last leaf", "O.Henry", 1914, "novel"));
-        books.put(1003, new NonFictionBook("Clean code", "I.Husky", 2018, "IT"));
-        books.put(1004, new Book("Perfumer", "P.Suskind", 1741));
-        books.put(1005, new NonFictionBook("Testing.Dot.Com", "R.Savin", 2003, "IT"));
-        books.remove(1001);
-        books.put(1006, new FictionBook("POCROV", "L.Dashvar", 2018, "modern UA"));
-        System.out.println(books.get(1003));
-        searchTitle("perfumer", books);
-        searchAuthor("O.Henry", books);
-        searchYear(2018, books);
-        searchGenre("novel", books);
-        searchSubject("IT", books);
+    Map<Integer, Book> books;
+
+    public Library() {
+        this.books = new HashMap<>();
     }
 
-    public static void searchTitle(String title, Map<Integer, Book> books) {
+    public void addBook(Integer id, Book book) {
+        validateId(id);
+
+        if (isValidBook(book)) {
+            books.put(id, book);
+        } else {
+            throw new NullPointerException("Title or author can't be null");
+        }
+    }
+
+    public void removeBook(Integer id) {
+        if (books.containsKey(id)) {
+            books.remove(id);
+        } else {
+            throw new IllegalArgumentException("The book you wanted to delete doesn't exist");
+        }
+    }
+
+    public void searchId(Integer id) {
+        if (books.containsKey(id)) {
+            System.out.printf("Found id '%s' in book: %s%n", id, books.get(id));
+        } else {
+            throw new IllegalArgumentException("This ID doesn't exist");
+        }
+    }
+
+    public void searchTitle(String title) {
         for (Book value : books.values()) {
-            if (title.toLowerCase().equals(value.getTitle())) {
-                System.out.println(value);
+            if (title.equals(value.getTitle())) {
+                System.out.printf("Found title '%s' in book: %s%n", title, value);
             }
         }
     }
 
-    public static void searchAuthor(String author, Map<Integer, Book> books) {
+    public void searchAuthor(String author) {
         for (Book value : books.values()) {
-            if (author.toLowerCase().equals(value.getAuthor())) {
-                System.out.println(value);
+            if (author.equals(value.getAuthor())) {
+                System.out.printf("Found author '%s' in book: %s%n", author, value);
             }
         }
     }
 
-    public static void searchYear(int year, Map<Integer, Book> books) {
+    public void searchYear(int year) {
         for (Book value : books.values()) {
             if (year == value.getYear()) {
-                System.out.println(value);
+                System.out.printf("Found year '%d' in book: %s%n", year, value);
             }
         }
     }
 
-    public static void searchGenre(String genre, Map<Integer, Book> books) {
-        for (Book value : books.values()) {
-            if (genre.toLowerCase().equals(value.getGenre())) {
-                System.out.println(value);
+
+    private void validateId(Integer id) {
+        if (id < 1000) {
+            throw new InvalidIdException();
+        }
+    }
+
+    private boolean isValidBook(Book book) {
+        return book.getTitle() != null || book.getAuthor() != null;
+    }
+
+    public void searchSubject(String subject) {
+        for (Book book : books.values()) {
+            if (book instanceof NonFictionBook nonFictionBook) {
+                if (nonFictionBook.getSubject().equals(subject)) {
+                    System.out.printf("Found subject '%s' in book: %s%n", subject, book);
+                }
             }
         }
     }
 
-    public static void searchSubject(String subject, Map<Integer, Book> books) {
-        for (Book value : books.values()) {
-            if (subject.toLowerCase().equals(value.getSubject())) {
-                System.out.println(value);
-            }
-        }
-    }
 }
