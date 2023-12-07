@@ -13,11 +13,11 @@ public class Book {
     }
 
     public String getTitle() {
-        return title.toLowerCase();
+        return title;
     }
 
     public String getAuthor() {
-        return author.toLowerCase();
+        return author;
     }
 
     public int getYear() {
