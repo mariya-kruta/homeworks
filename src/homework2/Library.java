@@ -12,32 +12,35 @@ public class Library {
     }
 
     public void addBook(Integer id, Book book) {
-            if(id<1000) try {
-                throw new InvalidIdException();
-            } catch (InvalidIdException e) {
-                System.out.println(e.getMessage());
-        }if (book.getTitle() != null || book.getAuthor() != null){
-            books.put(id, book);}
-        else {throw new  NullPointerException("Title or author can't be null");}
-    }
+        validateId(id);
 
-    public void deleteBook(Integer id) {
-        if (books.containsKey(id)){
-        books.remove(id);}
-        else {throw new IllegalArgumentException("The book you wanted to delete doesn't exist");
+        if (isValidBook(book)) {
+            books.put(id, book);
+        } else {
+            throw new NullPointerException("Title or author can't be null");
         }
     }
 
-    public void searchId(Integer id){
-        if (books.containsKey(id)){
-            System.out.println(books.get(id));
-        } else {throw new IllegalArgumentException("This ID doesn't exist");}
+    public void removeBook(Integer id) {
+        if (books.containsKey(id)) {
+            books.remove(id);
+        } else {
+            throw new IllegalArgumentException("The book you wanted to delete doesn't exist");
+        }
+    }
+
+    public void searchId(Integer id) {
+        if (books.containsKey(id)) {
+            System.out.printf("Found id '%s' in book: %s%n", id, books.get(id));
+        } else {
+            throw new IllegalArgumentException("This ID doesn't exist");
+        }
     }
 
     public void searchTitle(String title) {
         for (Book value : books.values()) {
             if (title.equals(value.getTitle())) {
-                System.out.println(value);
+                System.out.printf("Found title '%s' in book: %s%n", title, value);
             }
         }
     }
@@ -45,7 +48,7 @@ public class Library {
     public void searchAuthor(String author) {
         for (Book value : books.values()) {
             if (author.equals(value.getAuthor())) {
-                System.out.println(value);
+                System.out.printf("Found author '%s' in book: %s%n", author, value);
             }
         }
     }
@@ -53,34 +56,30 @@ public class Library {
     public void searchYear(int year) {
         for (Book value : books.values()) {
             if (year == value.getYear()) {
-                System.out.println(value);
+                System.out.printf("Found year '%d' in book: %s%n", year, value);
             }
         }
     }
 
 
-   /* public void searchSubject(String subject) {
-        for (Book value : books.values()) {
-            if (value instanceof NonFictionBook && subject.equals(((NonFictionBook) value).getSubject())) {
-                System.out.println(value);
-            }
+    private void validateId(Integer id) {
+        if (id < 1000) {
+            throw new InvalidIdException();
         }
-    }*/
-}
+    }
 
-    /*public void searchGenre(String genre) {
-        for (Book value : books.values()) {
-            if (genre.equals(value.getGenre())) {
-                System.out.println(value);
-            }
-        }
+    private boolean isValidBook(Book book) {
+        return book.getTitle() != null || book.getAuthor() != null;
     }
 
     public void searchSubject(String subject) {
         for (Book book : books.values()) {
-            if (books instanceof NonFictionBook){
-                NonFictionBook nonFictionBook = (NonFictionBook) book;
-                if (subject.equals(nonFictionBook.getSubject()));
+            if (book instanceof NonFictionBook nonFictionBook) {
+                if (nonFictionBook.getSubject().equals(subject)) {
+                    System.out.printf("Found subject '%s' in book: %s%n", subject, book);
+                }
             }
         }
-}*/
+    }
+
+}
