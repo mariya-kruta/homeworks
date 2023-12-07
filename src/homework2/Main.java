@@ -21,7 +21,6 @@ public class Main {
         library1.searchYear(2018);
 
         library1.searchSubject("IT");
-
     }
 
 }

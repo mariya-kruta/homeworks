@@ -24,14 +24,6 @@ public class Book {
         return year;
     }
 
-    public String getSubject() {
-        return "is absent";
-    }
-
-    public String getGenre() {
-        return "is absent";
-    }
-
     public String toString() {
         return "Name: " + title + ". Author: " + author + ". Year: " + year + ". ";
     }
