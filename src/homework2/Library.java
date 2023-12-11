@@ -38,11 +38,13 @@ public class Library {
     }
 
     public void searchTitle(String title) {
+        boolean found = false;
         for (Book value : books.values()) {
             if (title.equals(value.getTitle())) {
                 System.out.printf("Found title '%s' in book: %s%n", title, value);
+                found = true;
             }
-        }
+        }if (!found) System.out.println("hui");
     }
 
     public void searchAuthor(String author) {
@@ -62,16 +64,6 @@ public class Library {
     }
 
 
-    private void validateId(Integer id) {
-        if (id < 1000) {
-            throw new InvalidIdException();
-        }
-    }
-
-    private boolean isValidBook(Book book) {
-        return book.getTitle() != null || book.getAuthor() != null;
-    }
-
     public void searchSubject(String subject) {
         for (Book book : books.values()) {
             if (book instanceof NonFictionBook nonFictionBook) {
@@ -82,4 +74,24 @@ public class Library {
         }
     }
 
-}
+    public void searchGenre(String genre) {
+        for (Book book : books.values()) {
+            if (book instanceof FictionBook FictionBook) {
+                if (FictionBook.getGenre().equals(genre)) {
+                    System.out.printf("Found genre '%s' in book: %s%n", genre, book);
+                }
+            }
+        }
+    }
+
+    private void validateId(Integer id) {
+        if (id < 1000) {
+            throw new InvalidIdException();
+        }
+    }
+
+    private boolean isValidBook(Book book) {
+        return book.getTitle() != null || book.getAuthor() != null;
+    }
+
+    }
