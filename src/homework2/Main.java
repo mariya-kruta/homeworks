@@ -17,10 +17,10 @@ public class Main {
 
         library1.searchId(1001);
         library1.searchTitle("TDCom");
-        library1.searchAuthor("Kroshka");
+        library1.searchAuthor("O.Henry");
         library1.searchYear(2018);
-
         library1.searchSubject("IT");
+        library1.searchGenre("modern UA");
     }
 
 }

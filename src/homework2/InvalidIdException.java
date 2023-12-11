@@ -2,7 +2,7 @@ package homework2;
 
 public class InvalidIdException extends RuntimeException {
 
-    public InvalidIdException(){
+    public InvalidIdException() {
         super("ID can't be less than 1000");
     }
 
