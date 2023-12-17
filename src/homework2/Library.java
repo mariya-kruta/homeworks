@@ -12,20 +12,17 @@ public class Library {
     }
 
     public void addBook(Integer id, Book book) {
+        isValidBook(book, id);
         validateId(id);
-
-        if (isValidBook(book)) {
-            books.put(id, book);
-        } else {
-            throw new NullPointerException("Title or author can't be null");
-        }
+        isUniqueValue(id, book.getTitle());
+        books.put(id, book);
     }
 
     public void removeBook(Integer id) {
         if (books.containsKey(id)) {
             books.remove(id);
         } else {
-            throw new IllegalArgumentException("The book you wanted to delete doesn't exist");
+            throw new IllegalArgumentException("Remove book with ID " + id + ": this book doesn't exist");
         }
     }
 
@@ -33,7 +30,7 @@ public class Library {
         if (books.containsKey(id)) {
             System.out.printf("Found id '%s' in book: %s%n", id, books.get(id));
         } else {
-            throw new IllegalArgumentException("Found id " + id + " in book: nothing found.");
+            throw new IllegalArgumentException("Search for a id " + id + " in library: nothing found.");
         }
     }
 
@@ -70,7 +67,6 @@ public class Library {
         if (!found) throw new NotFoundValueException.NotFoundYearException(year);
     }
 
-
     public void searchSubject(String subject) {
         boolean found = false;
         for (Book book : books.values()) {
@@ -99,12 +95,22 @@ public class Library {
 
     private void validateId(Integer id) {
         if (id < 1000) {
-            throw new InvalidIdException();
+            throw new InvalidValueException.InvalidIdException(id);
         }
     }
 
-    private boolean isValidBook(Book book) {
-        return book.getTitle() != null || book.getAuthor() != null;
+    private void isUniqueValue(Integer id, String title) {
+        for (Book value : books.values()) {
+            if (title.equals(value.getTitle()) || books.containsKey(id))
+                throw new InvalidValueException.NotUniqueValueException(id);
+
+        }
+    }
+
+    private void isValidBook(Book book, int id) {
+        if (book.getTitle() == null || book.getAuthor() == null){
+            throw new NullPointerException("Add book with ID " + id + ": title or author can't be null.");
+        }
     }
 
 }
