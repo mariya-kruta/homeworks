@@ -33,7 +33,7 @@ public class Library {
         if (books.containsKey(id)) {
             System.out.printf("Found id '%s' in book: %s%n", id, books.get(id));
         } else {
-            throw new IllegalArgumentException("Found id "+id+" in book: nothing found.");
+            throw new IllegalArgumentException("Found id " + id + " in book: nothing found.");
         }
     }
 
